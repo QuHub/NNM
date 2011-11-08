@@ -1,0 +1,15 @@
+PROJECT_RUBY="ruby-1.9.2-p0"
+
+# use the global gemset in order to check for and install bundler, since we
+# don't need it to be different for different projects
+rvm use $PROJECT_RUBY@global --create --install
+
+echo -n "Checking if bundler gem is installed... "
+if `ruby -rubygems -e "gem 'bundler'" &>/dev/null`; then
+  echo "Yup, good to go."
+else
+  echo "Nope. Doing that now."
+  gem install bundler
+fi
+
+
